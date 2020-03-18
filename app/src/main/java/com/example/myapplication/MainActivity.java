@@ -1,45 +1,25 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.elconfidencial.bubbleshowcase.BubbleShowCase;
 import com.elconfidencial.bubbleshowcase.BubbleShowCaseBuilder;
 import com.elconfidencial.bubbleshowcase.BubbleShowCaseListener;
 import com.elconfidencial.bubbleshowcase.BubbleShowCaseSequence;
-import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
-import com.github.amlcurran.showcaseview.ShowcaseDrawer;
 import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.wooplr.spotlight.SpotlightConfig;
-import com.wooplr.spotlight.SpotlightView;
 import com.wooplr.spotlight.utils.SpotlightSequence;
 
 import me.toptas.fancyshowcase.FancyShowCaseQueue;
 import me.toptas.fancyshowcase.FancyShowCaseView;
-import me.toptas.fancyshowcase.FocusShape;
-import me.toptas.fancyshowcase.listener.DismissListener;
 import me.toptas.fancyshowcase.listener.OnViewInflateListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,16 +32,11 @@ public class MainActivity extends AppCompatActivity {
     Button button2;
     Button button3;
     TextView textView;
-    ConstraintLayout cr;
-    Draw draw;
-
     FancyShowCaseQueue queue;
 
     FancyShowCaseView firstView;
     FancyShowCaseView secView;
     FancyShowCaseView thirdView;
-
-    double usageId = Math.random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

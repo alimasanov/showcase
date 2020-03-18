@@ -1,12 +1,11 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.widget.RemoteViews;
 
-import java.sql.Time;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -18,9 +17,9 @@ public class NewAppWidget extends AppWidgetProvider {
                                 int appWidgetId) {
 
         Date date = new Date();
-        String dateText = "" + date.getDate();
-        String dayText = "" + date.getDay();
-        String timeText = "" + date.getTime();
+        @SuppressLint("DefaultLocale") String dateText = String.format("%d", date.getDate());
+        @SuppressLint("DefaultLocale") String dayText = String.format("%d", date.getDay());
+        @SuppressLint("DefaultLocale") String timeText = String.format("%d", date.getTime());
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.new_app_widget);
         views.setTextViewText(R.id.tv_date, dateText);

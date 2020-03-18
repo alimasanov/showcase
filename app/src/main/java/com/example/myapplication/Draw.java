@@ -1,13 +1,14 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Point;
 import android.graphics.RectF;
 import android.view.View;
 
+@SuppressLint("ViewConstructor")
 public class Draw extends View {
 
     Paint paint;
@@ -16,13 +17,6 @@ public class Draw extends View {
     float x;
     float y;
     float radius = 159;
-
-    public Draw(Context context, RectF rectF, String type) {
-        super(context);
-        this.rectF = rectF;
-        this.type = type;
-        init();
-    }
 
     public Draw(Context context, float x, float y) {
         super(context);
@@ -37,12 +31,6 @@ public class Draw extends View {
         paint.setColor(Color.RED);
         paint.setStrokeWidth(10);
         paint.setStyle(Paint.Style.STROKE);
-    }
-
-    private void getCoordFromRect(RectF rectF) {
-        x = rectF.top + (rectF.bottom - rectF.top) / 2;
-        y = rectF.left + (rectF.right - rectF.left) / 2;
-        radius = 150;
     }
 
     @Override

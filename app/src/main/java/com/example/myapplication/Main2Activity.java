@@ -2,22 +2,14 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Point;
-import android.graphics.RectF;
 import android.os.Bundle;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class Main2Activity extends AppCompatActivity {
 
     RelativeLayout layout;
     Button button;
-    float x1;
-    float x2;
-    float y1;
-    float y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -2,4 +2,10 @@
     <string name="app_name">My Application</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="todo">TODO</string>
+    <string name="var1">var1</string>
+    <string name="var3">var3</string>
+    <string name="var4">var4</string>
+    <string name="var2">var2</string>
+    <string name="button">Button</string>
 </resources>
