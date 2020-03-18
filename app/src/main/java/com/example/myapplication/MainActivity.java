@@ -1,15 +1,21 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -21,9 +27,14 @@ import com.elconfidencial.bubbleshowcase.BubbleShowCase;
 import com.elconfidencial.bubbleshowcase.BubbleShowCaseBuilder;
 import com.elconfidencial.bubbleshowcase.BubbleShowCaseListener;
 import com.elconfidencial.bubbleshowcase.BubbleShowCaseSequence;
+import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
+import com.github.amlcurran.showcaseview.ShowcaseDrawer;
 import com.github.amlcurran.showcaseview.ShowcaseView;
 import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
+import com.wooplr.spotlight.SpotlightConfig;
+import com.wooplr.spotlight.SpotlightView;
+import com.wooplr.spotlight.utils.SpotlightSequence;
 
 import me.toptas.fancyshowcase.FancyShowCaseQueue;
 import me.toptas.fancyshowcase.FancyShowCaseView;
@@ -36,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Button var1;
     Button var2;
     Button var3;
+    Button var4;
     Button button;
     Button button2;
     Button button3;
@@ -48,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     FancyShowCaseView firstView;
     FancyShowCaseView secView;
     FancyShowCaseView thirdView;
+
+    double usageId = Math.random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         var1 = findViewById(R.id.var1);
         var2 = findViewById(R.id.var2);
         var3 = findViewById(R.id.var3);
+        var4 = findViewById(R.id.var4);
         textView = findViewById(R.id.text_view);
 
         setListeners();
@@ -80,18 +95,19 @@ public class MainActivity extends AppCompatActivity {
                 firstView = new FancyShowCaseView.Builder(MainActivity.this)
                         .focusOn(button)
                         .title("title")
-                        .customView(R.layout.custrom_view, new OnViewInflateListener() {
-                            @Override
-                            public void onViewInflated(View view) {
-                                textView = view.findViewById(R.id.text_view);
-                            }
-                        })
                         .disableFocusAnimation()
                         .build();
 
                 secView = new FancyShowCaseView.Builder(MainActivity.this)
                         .focusOn(button2)
                         .title("title")
+                        .customView(R.layout.custrom_view, new OnViewInflateListener() {
+                            @Override
+                            public void onViewInflated(View view) {
+                                TextView tv = view.findViewById(R.id.text_view);
+                                tv.setText("за джона");
+                            }
+                        })
                         .disableFocusAnimation()
                         .build();
 
@@ -114,14 +130,12 @@ public class MainActivity extends AppCompatActivity {
                         .title("title")
                         .description("description")
                         .targetView(button)
-                        .backgroundColor(R.drawable.back)
                         .listener(bubbleShowCaseListener);
 
                 BubbleShowCaseBuilder sec = new BubbleShowCaseBuilder(MainActivity.this)
                         .title("title")
                         .description("description")
                         .targetView(button2)
-                        .backgroundColor(R.drawable.back)
                         .arrowPosition(BubbleShowCase.ArrowPosition.RIGHT)
                         .listener(bubbleShowCaseListener);
 
@@ -129,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
                         .title("title")
                         .description("description")
                         .targetView(button3)
-                        .backgroundColor(R.drawable.back)
                         .arrowPosition(BubbleShowCase.ArrowPosition.LEFT)
                         .listener(bubbleShowCaseListener);
 
@@ -167,11 +180,29 @@ public class MainActivity extends AppCompatActivity {
                         .setContentText("text")
                         .setContentTitle("title")
                         .blockAllTouches()
-                        .setStyle(R.style.CustomShowcaseTheme2)
+                        .setStyle(R.style.CustomShowcaseTheme4)
                         .build();
 
+            }
+        });
+
+        var4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
+                SpotlightConfig config = new SpotlightConfig();
+                config.setPadding(50);
+                config.setLineAndArcColor(Color.BLUE);
+                config.setHeadingTvColor(Color.BLUE);
+                config.setLineAnimationDuration(200);
+                config.setSubHeadingTvSize(18);
+
+                SpotlightSequence.getInstance(MainActivity.this,config)
+                        .addSpotlight(button, "Button 1", "this is button 1", "" + Math.random())
+                        .addSpotlight(button2, "Button 2", "this is button 2", "" + Math.random())
+                        .addSpotlight(textView, "TextView", "this is textView", "" + Math.random())
+                .startSequence();
             }
         });
     }
